@@ -30,10 +30,24 @@ client.username_pw_set(ACCESS_TOKEN)
 client.connect(THINGSBOARD_HOST, 1883, 60)
 client.loop_start()
 ```
-```ruby
-require 'redcarpet'
-markdown = Redcarpet.new("Hello World!")
-puts markdown.to_html
+```python
+import sys, time, json
+from dht_reader.dht_reader import DHTReader # type: ignore
+import paho.mqtt.client as mqtt # type: ignore
+
+SENSOR_GPIO_MAPPING = {
+    12: "1", 16: "2", 25: "3", 24: "4" }
+
+dht_type = "DHT22"
+chip_path = "/dev/gpiochip4"
+
+THINGSBOARD_HOST = "fvh.villahermosa.tecnm.mx"
+ACCESS_TOKEN = 'ZEA_TOKEN_TODOS_LISTOS'
+
+client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
+client.username_pw_set(ACCESS_TOKEN)
+client.connect(THINGSBOARD_HOST, 1883, 60)
+client.loop_start()
 ```
 <h3>Módulo script de automatización de riego.</h3>
 <hr width=50% />
