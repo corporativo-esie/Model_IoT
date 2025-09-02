@@ -20,6 +20,7 @@ SENSOR_GPIO_MAPPING = {
 dht_type = "DHT22"
 chip_path = "/dev/gpiochip4"
 ```
+
 <p>Para el acceso al servidor de thingboards en la nube, se establecieron las variables de THINGSBOARD_HOST y ACCESS_TOKEN, valores que se obtienen de la plataforma Thingboards; así mismo se instanció el objeto mqtt.client() especificando la versión 2 para su funcionamiento y se añadieron el host y el token en el puerto 1883 para luego iniciar el proceso de envío con el método client.loop.start().</p>
 ```python
 
