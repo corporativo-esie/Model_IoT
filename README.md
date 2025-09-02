@@ -61,4 +61,89 @@ client.disconnect()
 ```
 <h3>Módulo script de automatización de riego.</h3>
 <hr width=50% />
+
+
+Para el módulo de automatización del riego se crearon dos archivos agenda.json y riego_automatico.py; el primero se utiliza para establecer el horario en que se prenderá y apagará la bomba establecidas en las claves “HoraInicio” y en “HoraFin”, este archivo puede ser modificado por el agricultor desde un archivo de texto o una interfaz gráfica.
+```json 
+
+{
+            "Lunes":{
+                    "Veces":7,
+                    "Horario":[
+                        {"HoraInicio":"08:00","HoraFin":"08:01","Tiempo":"1m"},
+                        {"HoraInicio":"10:00","HoraFin":"10:01","Tiempo":"1m"},
+                        {"HoraInicio":"12:00","HoraFin":"12:01","Tiempo":"1m"},
+                        {"HoraInicio":"14:00","HoraFin":"14:01","Tiempo":"1m"},
+                        {"HoraInicio":"16:00","HoraFin":"16:01","Tiempo":"1m"},
+                        {"HoraInicio":"18:00","HoraFin":"18:01","Tiempo":"1m"},
+                        {"HoraInicio":"20:00","HoraFin":"20:01","Tiempo":"1m"}
+                    ]
+            },
+            "Martes":{
+                    "Veces":5,
+                    "Horario":[
+                        {"HoraInicio":"10:00","HoraFin":"10:01","Tiempo":"1m"},
+                        {"HoraInicio":"12:00","HoraFin":"12:01","Tiempo":"1m"},
+                        {"HoraInicio":"14:00","HoraFin":"14:01","Tiempo":"1m"},
+                        {"HoraInicio":"16:00","HoraFin":"16:01","Tiempo":"1m"},
+                        {"HoraInicio":"18:00","HoraFin":"18:01","Tiempo":"1m"}
+                    ]
+            },
+            "Miercoles":{
+                    "Veces":5,
+                    "Horario":[
+                        {"HoraInicio":"10:00","HoraFin":"10:01","Tiempo":"1m"},
+                        {"HoraInicio":"12:00","HoraFin":"12:01","Tiempo":"1m"},
+                        {"HoraInicio":"14:00","HoraFin":"14:01","Tiempo":"1m"},
+                        {"HoraInicio":"16:00","HoraFin":"16:01","Tiempo":"1m"},
+                        {"HoraInicio":"18:00","HoraFin":"18:01","Tiempo":"1m"}
+                    ]
+            },
+            "Jueves":{
+                    "Veces":5,
+                    "Horario":[
+                        {"HoraInicio":"11:02","HoraFin":"11:03","Tiempo":"1m"},
+                        {"HoraInicio":"12:00","HoraFin":"12:01","Tiempo":"1m"},
+                        {"HoraInicio":"14:00","HoraFin":"14:01","Tiempo":"1m"},
+                        {"HoraInicio":"16:00","HoraFin":"16:01","Tiempo":"1m"},
+                        {"HoraInicio":"18:00","HoraFin":"18:01","Tiempo":"1m"}
+                    ]
+            },
+            "Viernes":{
+                    "Veces":5,
+                    "Horario":[
+                        {"HoraInicio":"10:00","HoraFin":"10:01","Tiempo":"1m"},
+                        {"HoraInicio":"12:00","HoraFin":"12:01","Tiempo":"1m"},
+                        {"HoraInicio":"14:21","HoraFin":"14:23","Tiempo":"1m"},
+                        {"HoraInicio":"16:00","HoraFin":"16:01","Tiempo":"1m"},
+                        {"HoraInicio":"18:00","HoraFin":"18:01","Tiempo":"1m"}
+                    ]
+            },
+            "Sabado":{
+                    "Veces":5,
+                    "Horario":[
+                        {"HoraInicio":"10:00","HoraFin":"10:01","Tiempo":"1m"},
+                        {"HoraInicio":"12:00","HoraFin":"12:01","Tiempo":"1m"},
+                        {"HoraInicio":"14:00","HoraFin":"14:01","Tiempo":"1m"},
+                        {"HoraInicio":"16:00","HoraFin":"16:01","Tiempo":"1m"},
+                        {"HoraInicio":"18:00","HoraFin":"18:01","Tiempo":"1m"}
+                    ]
+            },
+            "Domingo":{
+                    "Veces":7,
+                    "Horario":[
+                        {"HoraInicio":"08:00","HoraFin":"08:01","Tiempo":"1m"},
+                        {"HoraInicio":"10:00","HoraFin":"10:01","Tiempo":"1m"},
+                        {"HoraInicio":"12:00","HoraFin":"12:01","Tiempo":"1m"},
+                        {"HoraInicio":"14:00","HoraFin":"14:01","Tiempo":"1m"},
+                        {"HoraInicio":"16:00","HoraFin":"16:01","Tiempo":"1m"},
+                        {"HoraInicio":"18:00","HoraFin":"18:01","Tiempo":"1m"},
+                        {"HoraInicio":"20:00","HoraFin":"20:01","Tiempo":"1m"}
+                    ]
+            }
+}
+```
+
+
+
 <h3>Módulo script de sensor de flujo de agua.</h3>
