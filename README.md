@@ -5,7 +5,7 @@
 
 <h3>Módulo script de lectura de sensores DHT22.</h3>
 <hr width=50% />
-<b><s>Archivo rasp_dht_reader.py</s></b>
+<b>Archivo rasp_dht_reader.py</b>
 
 <br/>
 Para la lectura de los sensores se realizaron 3 archivos, el primero para leer los DHT22, se desarrolló el programa rasp_dht_reader.py en el cual se importaron las librerías de sys, time, json, paho-mqtt-client y DHTReader, se asignó un diccionario llamado SENSOR_GPIO_MAPPING en el que se establecieron los pines 12 para el sensor 1, el pin 16 para el sensor 2, el pin 25 para el sensor 3 y el pin 24 para el sensor 4, además se asignó la variable chip_path con la ruta de acceso a los pines desde Linux “/dev/gpiochip4”.
