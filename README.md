@@ -30,6 +30,11 @@ client.username_pw_set(ACCESS_TOKEN)
 client.connect(THINGSBOARD_HOST, 1883, 60)
 client.loop_start()
 ```
+```ruby
+require 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+```
 <h3>Módulo script de automatización de riego.</h3>
 <hr width=50% />
 <h3>Módulo script de sensor de flujo de agua.</h3>
