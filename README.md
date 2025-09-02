@@ -3,4 +3,4 @@
 <hr>
 <br/>
 
-##Módulo script de lectura de sensores DHT22.
+<h3Módulo script de lectura de sensores DHT22.</h3>
