@@ -65,7 +65,7 @@ client.disconnect()
 
 
 Para el módulo de automatización del riego se crearon dos archivos agenda.json y riego_automatico.py; el primero se utiliza para establecer el horario en que se prenderá y apagará la bomba establecidas en las claves “HoraInicio” y en “HoraFin”, este archivo puede ser modificado por el agricultor desde un archivo de texto o una interfaz gráfica.
-<b>Archivo agenda.json</b>
+<b>Archivo agenda.json</b><br />
 
 ```json 
 
@@ -153,7 +153,7 @@ Para el módulo de automatización del riego se crearon dos archivos agenda.json
 <p>En el mismo archivo riego_automatico.py, La función obtener_apuntador(veces, dia, hora_actual, mydata), busca en el archivo agenda.json coincidencias en el día actual y la hora y ejecuta el prendido o apagado de la bomba, al mismo tiempo envía el estado de la bomba a la plataforma Thingsboard</p>
 
 <p>En el mismo archivo riego_automatico.py, se activa el envío de datos mediante MQTT desde el método client.loop_start() y se continúa con el While True: donde se hace la lectura del archivo de horarios con la instrucción with open("agenda.json","r") as j:, se obtiene la fecha y hora actual y con esto se determina el día de la semana a través de una condición if, la cual llama a la función obtener_apuntador(mydata[dia_hoy]["Veces"], "Lunes", hora_actual, mydata), pasándole los parámetros obtenidos.</p>
-<b>Archivo riego_automatico.py</b>
+<b>Archivo riego_automatico.py</b><br/>
 
 
 ```python
@@ -249,3 +249,42 @@ client.disconnect()
 
 
 <h3>Módulo script de sensor de flujo de agua.</h3>
+
+<p>Para la lectura del flujo de agua se programó el archivo water_flow_final.py en el cual se importaron las librerías time, sys, RPi.GPIO y se estableció el puerto 23 para la lectura del sensor YF-S201; se definió una función llamada GPIO.add_event_detect(FLOW_SENSOR_GPIO, GPIO.FALLING, callback=countPulse), donde pasamos el puerto, y usamos GPIO.FALLING porque el estado es ALTO por defecto debido a la resistencia pull-up interna, posteriormente se inicia el bucle infinito While True: y activamos el contador, se espera un segundo y lo desactivamos y después se calcula el caudal por minuto</p>
+<b>Archivo water_flow_final.py</b><br/>
+
+```python
+import time, sys
+import RPi.GPIO as GPIO
+
+FLOW_SENSOR_GPIO = 23
+ 
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(FLOW_SENSOR_GPIO, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+ 
+global count
+count = 0
+ 
+def countPulse(channel):
+   global count
+   if start_counter == 1:
+      count = count+1
+ 
+GPIO.add_event_detect(FLOW_SENSOR_GPIO, GPIO.FALLING, callback=countPulse)
+ 
+while True:
+    try:
+        start_counter = 1
+        time.sleep(1)
+        start_counter = 0
+        flow = (count / 7.5) # Pulse frequency (Hz) = 7.5Q, Q is flow rate in L/min.
+        print("The flow is: %.3f Litros/Minuto" % (flow))
+        count = 0
+        time.sleep(5)
+    except KeyboardInterrupt:
+        print('\nkeyboard interrupt!')
+        GPIO.cleanup()
+        sys.exit()
+
+```
+
