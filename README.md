@@ -63,7 +63,10 @@ client.disconnect()
 <hr width=50% />
 
 
+
 Para el módulo de automatización del riego se crearon dos archivos agenda.json y riego_automatico.py; el primero se utiliza para establecer el horario en que se prenderá y apagará la bomba establecidas en las claves “HoraInicio” y en “HoraFin”, este archivo puede ser modificado por el agricultor desde un archivo de texto o una interfaz gráfica.
+<b>Archivo agenda.json</b>
+
 ```json 
 
 {
@@ -150,6 +153,8 @@ Para el módulo de automatización del riego se crearon dos archivos agenda.json
 <p>En el mismo archivo riego_automatico.py, La función obtener_apuntador(veces, dia, hora_actual, mydata), busca en el archivo agenda.json coincidencias en el día actual y la hora y ejecuta el prendido o apagado de la bomba, al mismo tiempo envía el estado de la bomba a la plataforma Thingsboard</p>
 
 <p>En el mismo archivo riego_automatico.py, se activa el envío de datos mediante MQTT desde el método client.loop_start() y se continúa con el While True: donde se hace la lectura del archivo de horarios con la instrucción with open("agenda.json","r") as j:, se obtiene la fecha y hora actual y con esto se determina el día de la semana a través de una condición if, la cual llama a la función obtener_apuntador(mydata[dia_hoy]["Veces"], "Lunes", hora_actual, mydata), pasándole los parámetros obtenidos.</p>
+<b>Archivo riego_automatico.py</b>
+
 
 ```python
 import json, time
